@@ -11,6 +11,9 @@
 # debug
 debug.log
 
+# firebase
+src/firebase.js
+
 # production
 /build
 

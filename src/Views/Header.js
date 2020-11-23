@@ -1,24 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import { Menu, Search, VideoCall, Apps, Notifications } from "@material-ui/icons"
 import { Avatar } from "@material-ui/core";
-import "./Header.css"
+import "./Header.css";
 
 function Header() {
+    const [input, setInput] = useState('')
+
     return (
         <div className="header">
 
             <div className="header_left" >
                 <Menu />
-                <img
-                    className="header_logo"
-                    src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Logo_of_YouTube_%282015-2017%29.svg"
-                    alt=""
-                />
+                <Link to="/">
+                    <img
+                        className="header_logo"
+                        src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Logo_of_YouTube_%282015-2017%29.svg"
+                        alt=""
+                    />
+                </Link>
+
             </div>
 
             <div className="header_center">
-                <input type="text" placeholder="Search" />
-                <Search className="header_centerButton" />
+                <input
+                    value={input}
+                    onChange={e => setInput(e.target.value)}
+                    type="text"
+                    placeholder="Search"
+                />
+                <Link to={`/search/${input}`}>
+                    <Search className="header_centerButton" />
+                </Link>
             </div>
 
             <div className="header_right">
@@ -31,7 +44,7 @@ function Header() {
                     src=""
                 />
             </div>
-        </div>
+        </div >
     )
 }
 
